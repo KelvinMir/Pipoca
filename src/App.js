@@ -125,7 +125,7 @@ function Cadastro() {
       <div className='formulario'>
         <div className='control'>
           <form className='form' onSubmit={handleSubmit}>
-              <h1>Criar Conta</h1>
+              <h1 className='h1C'>Criar Conta</h1>
               <div className='nome-sobr'>
                 <div>
                   <label htmlFor="nome"></label>

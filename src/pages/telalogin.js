@@ -11,11 +11,7 @@ function Login() {
     email: '',
     password: '',
   });
-
-  const [erros, setErros] = useState({
-    email: '',
-    senha: '',
-  });
+  const [emailExists, setEmailExists] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -23,6 +19,9 @@ function Login() {
       ...formData,
       [name]: value,
     });
+    if (name === 'email') {
+      setEmailExists(false);
+    }
   };
 
   const handlePasswordChange = (event) => {
@@ -38,51 +37,50 @@ function Login() {
 
   const navigate = useNavigate();
 
+  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const novosErros = {};
+      if (formData.email) {
+        try {
 
-    if (!formData.email) {
-      novosErros.email = 'Campo de email é obrigatório';
-    }
+          const token = 'https://api-pipoca-agil-b6fe2e9f601d.herokuapp.com/api/v1/auth';
+          const encodedToken = encodeURIComponent(token);
+          const config = {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${encodedToken}`
+            },
+          };
 
-    if (!formData.password) {
-      novosErros.senha = 'Campo de senha é obrigatório';
-    }
+          const response = await axios.get(`https://api-pipoca-agil-b6fe2e9f601d.herokuapp.com/api/v1/users/email?email==${formData.email}`);
+          if (response.data.exists) {
+            setEmailExists(true);
+            return;
+          }
+        console.log(response.data.exists)
 
-    if (Object.keys(novosErros).length > 0) {
-      // Se houver erros, atualize o estado de erros
-      setErros(novosErros);
-    } else {
-      try {
         const LoginAPI = {
           email: formData.email,
           password: formData.password,
         };
 
-        const token = 'https://api-pipoca-agil-b6fe2e9f601d.herokuapp.com/api/v1/auth'; // Substitua pelo seu token real
-        const encodedToken = encodeURIComponent(token);
-        const config = {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${encodedToken}`
-          },
-        };
+        
 
-        const response = await axios.post('https://api-pipoca-agil-b6fe2e9f601d.herokuapp.com/api/v1/auth', LoginAPI, config);
+        const LoginResponse = await axios.post('https://api-pipoca-agil-b6fe2e9f601d.herokuapp.com/api/v1/auth', LoginAPI, config);
 
-        console.log('Resposta da API:', response.data);
+        console.log('Resposta da API:', LoginResponse.data);
         navigate('/sucess');
-      } catch (error) {
-        if (error.response) {
-          console.error('Erro na resposta da API:', error.response.data);
-        } else {
-          console.error('Erro na solicitação:', error.message);
+        } catch (error) {
+          if (error.response) {
+            console.error('Erro na resposta da API:', error.response.data);
+          } else {
+            console.error('Erro na solicitação:', error.message);
+          }
         }
       }
     }
-  };
 
   return (
     <div className='Login'>
@@ -90,7 +88,7 @@ function Login() {
       <div className='formulario'>
         <div className='control'>
           <form onSubmit={handleSubmit}>
-            <h1>Login</h1>
+            <h1 className='h1L'>Login</h1>
             <div className='logon'>
               <div className='user'>
                 <input
@@ -102,15 +100,16 @@ function Login() {
                   value={formData.email}
                   required
                 />
-                <span className="erro">{erros.email}</span>
+                {emailExists && <span className="erro">Este email já está cadastrado.</span>}
               </div>
-              <Senhaview
-                password={formData.password}
-                mostrarSenha={formData.mostrarSenha}
-                onChange={handlePasswordChange}
-                toggleMostrarSenha={toggleMostrarSenha}
-                erros={erros}
-              />
+              {formData.email && (
+                <Senhaview
+                  password={formData.password}
+                  mostrarSenha={formData.mostrarSenha}
+                  onChange={handlePasswordChange}
+                  toggleMostrarSenha={toggleMostrarSenha}
+                />
+              )}
               <div className='Recuperar'><a href='/'>Recuperar senha?</a></div>
               <button className='Entrar' type="submit">Entrar</button>
             </div>

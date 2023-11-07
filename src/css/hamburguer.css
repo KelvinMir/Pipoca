@@ -19,7 +19,7 @@
     z-index:5;
     display:block;
     position:absolute;
-    right:3.125rem;
+    right:2.5rem;
     top:0.5rem;
     background: none;
     border: none;
@@ -98,20 +98,15 @@
     
 } 
 
-@media (min-width:2560px) {
-    .menu-hamburguer.open {
-        left:84%;
-    }
-    .menu-items {
-        height:89rem;
-    }
-}
-@media (min-width:2560px) {
-    .menu-hamburguer.open {
-        left:84%;
-    }
-    .menu-items {
-        height:89rem;
-    }
+
+@media (max-width:1440px) {
+    .menu-toggle div {
+        height:0.1rem;
+        width:2.8rem;
+      }
+      .menu-items{
+        padding:0;
+        height:54rem;
+      }
 }
   
