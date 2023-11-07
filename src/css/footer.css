@@ -1,0 +1,17 @@
+footer{
+    display:flex;
+    justify-content:center;
+    margin-right:10.5rem;
+    align-items:center;
+    
+}
+ul {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    list-style-type:none;
+    gap:.8rem;
+}
+img {
+    width: 1.5rem;
+}

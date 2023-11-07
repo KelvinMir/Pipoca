@@ -1,0 +1,219 @@
+.Login {
+    margin:0;
+    padding:0;
+    background-image: url('../img/background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: top left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    height: 100vh;
+}  
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-top:7rem;
+    margin-bottom:8.25rem;
+}
+.formulario .control {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+}
+form {
+    background-color: #ffffff;
+    width: 40rem;
+    margin-right:10.5rem;
+    border-radius:1.875rem;
+    padding: 0 2rem;
+}
+h1 {
+    text-align: center;
+    font-family: 'Lobster', 'sans-serif';
+    font-size:3rem;
+    font-weight:400;
+    margin-top:2rem;
+    margin-bottom:4rem;
+    color:#000000;
+}
+.logon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    gap:1.5rem;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+
+    
+    
+
+}
+.logon .user {
+    width: 100%;
+    
+}
+.user input {
+    width: 94.5%;
+    padding:1rem;
+    border:.125rem solid #CDCDCD;
+    border-radius:5px;
+}
+.logon .password {
+    width: 100%;
+}
+.password {
+    position: relative;
+}
+.password input {
+    width: 94.5%;
+    padding:1rem;
+    border:.125rem solid #CDCDCD;
+    border-radius:5px;
+}
+.password i {
+    position: absolute;
+    right: 5%;
+    top: -19%;
+    font-size:1.5rem;
+    cursor:pointer;
+}
+.password button {
+    top: 35%;
+    position: absolute;
+    right: 5%;
+    top: 35%;
+    height: 20px;
+    border: none;
+    width: 30px;
+    background:#ffffff;
+}
+.Recuperar a {
+    text-decoration: none;
+    color: #000000;
+    font-family: 'Crimson Text';
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+
+}
+.Entrar {
+    background-color: #0F00C1;
+    width: 14.5rem;
+    height: 4rem;
+    align-self: center;
+    padding: .5rem;
+    border-radius:.9375rem;
+    color: #FFF;
+    font-family: 'Montserrat';
+    font-size:2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;
+    border:none;
+    cursor: pointer;
+
+}
+.Entrar a {
+    text-decoration: none;
+    color: #ffffff
+}
+.alter {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 1rem;
+    margin:1.5rem;
+    font-family: Montserrat;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+.line{
+    border: 1px solid #CDCDCD;
+    width:100%
+}
+
+.LogSocial {
+    display:flex;
+    flex-direction:column;
+    gap:1rem
+}
+.LogSocial button {
+    background:#FFFFFF;
+    height:3.25rem;
+    text-align: start;
+    border:1px solid #746969;
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    padding:1rem;
+    border-radius:5px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0px;
+    text-align: justified;
+
+}
+.facebook::before {
+    background-image: url('../img/facebook.svg');
+    content: "";
+    display: inline-block;
+    background-size: contain;
+    width:1.5rem;
+    height:1.5rem;
+    background-repeat: no-repeat;
+}
+.google::before {
+    background-image: url('../img/google.svg');
+    content: "";
+    display: inline-block;
+    background-size: contain;
+    width:1.5rem;
+    height:1.5rem;
+    background-repeat: no-repeat;
+}
+.apple::before {
+    background-image: url('../img/apple.svg');
+    content: "";
+    display: inline-block;
+    background-size: contain;
+    width:1.5rem;
+    height:1.5rem;
+    background-repeat: no-repeat;
+}
+.cadastrar {
+    margin-top:.5rem;
+    margin-bottom:1rem;
+    text-align:center;
+    font-family: 'Crimson Text';
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+}
+.cadastrar a {
+    color: #000;
+    font-family: Crimson Text;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 68.5%;
+    text-decoration-line: underline;
+}
