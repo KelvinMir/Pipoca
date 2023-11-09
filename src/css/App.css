@@ -191,14 +191,6 @@ body {
     overflow: hidden;
   }
 
-  .menu-toggle div {
-    height:0.1rem;
-    width:2.8rem;
-  }
-  .menu-items{
-    padding:0;
-    height:54rem;
-  }
   .formulario {
     margin-top:4.5rem;
   }
@@ -226,25 +218,41 @@ body {
   }
 }
 
-@media screen and (max-width: 1240px) and (max-height: 842px) {
+@media screen and (max-width: 1024px) and (max-height: 862px) {
   .form {
     height:39rem;
+    margin-right:4.5rem;
   }
   .nome-sobr input {
-    height:2.4rem;
+    height:2rem;
 
   }
   .email input {
-    height:2.4rem;
+    height:2rem;
   }
   .data {
     width:10.9rem;
   }
   .data-item {
-    height:2.4rem;
+    height:2rem;
     width: 10.7rem;
   }
   .senha input {
-    height:2.4rem;
+    height:2rem;
+  }
+}
+
+@media screen and (max-width: 1024px) and (max-height:768px) {
+  .menu-toggle div {
+    width:2.5rem;
+  }
+  .menu-items {
+    height:48rem;
+  }
+  .form {
+    height:36rem;
+  }
+  .overlay {
+    right:29%;
   }
 }

@@ -87,7 +87,7 @@ function Login() {
       <MenuHamburguer />
       <div className='formulario'>
         <div className='control'>
-          <form onSubmit={handleSubmit}>
+          <form className='formlog' onSubmit={handleSubmit}>
             <h1 className='h1L'>Login</h1>
             <div className='logon'>
               <div className='user'>

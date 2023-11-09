@@ -109,4 +109,21 @@
         height:54rem;
       }
 }
+
+@media screen and (max-width: 1024px) and (max-height: 862px) { 
+    .menu-items{
+        padding:0;
+        height:54rem;
+        width:19.5rem;
+      }
+      
+      
+      .menu-hamburger.open {
+        left:60%;
+      }
+    .overlay{
+        right:30%;
+      }
+}
+
   
