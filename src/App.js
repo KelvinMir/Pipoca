@@ -27,7 +27,7 @@ const [month, setMonth] = useState ('')
 
 const handlePass = (event) => {
   const newValue = event.target.value;
-  if (newValue.length >= 8 && newValue.length <= 20) {
+  if (newValue.length <= 20) {
     setPass({ password: newValue });
   }
 };
