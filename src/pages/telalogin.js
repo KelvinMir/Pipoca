@@ -85,7 +85,7 @@ function Login() {
   return (
     <div className='Login'>
       <MenuHamburguer />
-      <div className='formulario'>
+      <div className='formularioLog'>
         <div className='control'>
           <form className='formlog' onSubmit={handleSubmit}>
             <h1 className='h1L'>Login</h1>

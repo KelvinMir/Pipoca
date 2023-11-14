@@ -5,32 +5,40 @@ import Footer from './Component/footer';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+
 function Cadastro() {
 
 
- const [formData, setFormData] = useState({
-    nome: '',
-    sobrenome: '',
+const [formData, setFormData] = useState({
     email: '',
-    dia: '',
-    mes: '',
     ano: '',
-    password: '',
-  });
+  })
+const [validate, setValidate] = useState({
+  nome: '',
+  sobrenome: '',
+})
 
-  const [erros, setErros] = useState({
-    nome:'',
-    sobrenome: '',
-    dia:'',
-    mes:'',
-    ano:'',
-    email: '',
-    password: '',
 
-  });
+const [pass, setPass] = useState({
+  password: '',
+});
+const [day, setDay] = useState ('')
+const [month, setMonth] = useState ('')
+
+const handlePass = (event) => {
+  const newValue = event.target.value;
+  if (newValue.length >= 8 && newValue.length <= 20) {
+    setPass({ password: newValue });
+  }
+};
+
   
   const handleChange = (event) => {
     const { name, value } = event.target;
+
+    const cleanedText = value.replace(/[^A-Za-zÇçÁáÉéÍíÓóÚúÂâÊêÎîÔôÛûÀàÈèÌìÒòÙùÃãÕõÄäËëÏïÖöÜüÑñ\s]/g, '');
+
+    setValidate({ ...validate, [name]: cleanedText });
     if (name === 'email') {
       const lowercaseEmail = value.toLowerCase();
       setFormData({
@@ -45,9 +53,36 @@ function Cadastro() {
       });
    }
   };
+  const handleDayChange = (event) => {
+    const inputDay = event.target.value;
+  
+    const regexDay = /^(0?[1-9]|[12][0-9]|3[01])$/;
+    
+    if (regexDay.test(inputDay) || inputDay === '') {
+      setDay(inputDay);
+    }
+    
+  };
+  const handleMonthChange = (event) => {
+    const inputMonth = event.target.value;
+
+    const regexMonth = /^(0?[1-9]|1[0-2])$/;
+    if (regexMonth.test(inputMonth) || inputMonth === '') {
+      setMonth(inputMonth);
+    }
+  }
+  const handleYearChange = (event) => {
+    const inputYear = event.target.value;
+  
+    const regexYear = /^(19\d\d|20\d\d|[2-9]\d{3})$/;
+    if (regexYear.test(inputYear) || inputYear === '') {
+      setFormData({ ...formData, ano: inputYear });
+    }
+  }
+
 
   const handleEnviarData = () => {
-    const dataNascimento = `${formData.dia}/${formData.mes}/${formData.ano}`;
+    const dataNascimento = `${day}/${month}/${formData.ano}`;
     return dataNascimento;
   }
 
@@ -56,44 +91,16 @@ function Cadastro() {
     event.preventDefault();
     const dataNascimento = handleEnviarData();
 
-    const novosErros = {};
+   
 
-    if (!formData.nome) {
-      novosErros.nome = 'Campo de nome é obrigatório';
-    }
-
-    if (!formData.sobrenome) {
-      novosErros.sobrenome = 'Campo de sobrenome é obrigatório';
-    }
-    if (!formData.email) {
-      novosErros.email = 'Campo de email é obrigatório';
-    }
-    if (!formData.dia) {
-      novosErros.dia = 'Campo de dia é obrigatório';
-    }
-    if (!formData.mes) {
-      novosErros.mes = 'Campo de mês é obrigatório';
-    }
-    if (!formData.ano) {
-      novosErros.ano = 'Campo de ano é obrigatório';
-    }
-    if (!formData.password) {
-      novosErros.password = 'Campo de senha é obrigatório';
-    }
-
-
-    if (Object.keys(novosErros).length > 0) {
-      // Se houver erros, atualize o estado de erros
-      setErros(novosErros);
-    }
-  
+    
     try {
       const dadosParaAPI = {
 
-        "firstName": formData.nome,
-        "lastName": formData.sobrenome,
+        "firstName": validate.nome,
+        "lastName": validate.sobrenome,
         "email": formData.email,
-        "password": formData.password,
+        "password": pass,
         "birthday": dataNascimento,
       };
 
@@ -105,8 +112,6 @@ function Cadastro() {
         
       }
     };
-
-
       const response = await axios.post('https://api-pipoca-agil-b6fe2e9f601d.herokuapp.com/api/v1/users', dadosParaAPI, config);
     
       console.log('Envio concluido', response.data);
@@ -133,12 +138,13 @@ function Cadastro() {
                     type="text"
                     id="nome"
                     name="nome"
-                    value={formData.nome}
+                    value={validate.nome}
                     onChange={handleChange}
                     placeholder="&nbsp;Nome"
                     required
+                    pattern="[a-zA-Z]+"
                   />
-                    <span className="erro">{erros.nome}</span>
+                  
                 </div>
                 <div>
                   <label htmlFor="sobrenome"></label>
@@ -146,12 +152,13 @@ function Cadastro() {
                     type="text"
                     id="sobrenome"
                     name="sobrenome"
-                    value={formData.sobrenome}
+                    value={validate.sobrenome}
                     onChange={handleChange}
                     placeholder="&nbsp;Sobrenome"
                     required
+                    pattern="[a-zA-Z]+"
                   />
-                  <span className="erro">{erros.sobrenome}</span>
+                  
                 </div>    
               </div >
               <div className='email'>
@@ -165,7 +172,7 @@ function Cadastro() {
                   required pattern="[a-zA-Z0-9._+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,4}"
                   placeholder="&nbsp;Email"
                 />
-                <span className="erro">{erros.email}</span>
+                
               </div>
               <div className='data'>
                 <div>
@@ -174,14 +181,13 @@ function Cadastro() {
                       type="text"
                       id="dia"
                       name="dia"
-                      value={formData.dia}
-                      onChange={handleChange}
+                      value={day}
+                      onChange={handleDayChange}
                       placeholder="&nbsp;Dia"
                       required
-                      pattern="\d{2}"
                       className='data-item'
                     />
-                    <span className="erro">{erros.dia}</span>
+                   
                 </div>
                 <div>  
                     <label htmlFor="mes"></label>
@@ -189,14 +195,13 @@ function Cadastro() {
                       type="text"
                       id="mes"
                       name="mes"
-                      value={formData.mes}
-                      onChange={handleChange}
+                      value={month}
+                      onChange={handleMonthChange}
                       placeholder="&nbsp;Mês"
                       required
-                      pattern="\d{2}"
                       className='data-item'
                     />
-                    <span className="erro">{erros.mes}</span>
+                   
                 </div>  
                 <div >
                   <label htmlFor="ano"></label>
@@ -204,14 +209,14 @@ function Cadastro() {
                       type="text"
                       id="ano"
                       name="ano"
-                      value={formData.ano}
-                      onChange={handleChange}
+                      value={FormData.ano}
+                      onChange={handleYearChange}
                       placeholder="&nbsp;Ano"
                       required
                       pattern="\d{4}"
                       className='data-item'
                     />
-                    <span className="erro">{erros.ano}</span> 
+                  
                 </div>
                 
               </div>
@@ -221,12 +226,12 @@ function Cadastro() {
                     type="password"
                     id="password"
                     name="password"
-                    value={formData.password}
+                    value={pass.password}
                     placeholder="&nbsp;Senha" 
                     required
-                    onChange={handleChange}
+                    onChange={handlePass}
                   />
-                  <span className="erro">{erros.senha}</span>
+                 
                 </div>
               </div>
              

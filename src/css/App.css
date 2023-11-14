@@ -1,7 +1,5 @@
 
-body {
-  overflow: hidden;
-}
+
 .container {
   margin:0;
   padding:0;
@@ -21,14 +19,18 @@ body {
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
-  margin-top:7rem;
-  margin-bottom:8.25rem;
+  margin-top:8%;
+  margin-bottom:27%;
+  margin-left:53.14%;
+  margin-right:17%;
 }
 .formulario .control {
   display: flex;
   justify-content: center;
   align-items:center;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 .formulario input {
   font-size:1.5rem;
@@ -37,11 +39,13 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0 2rem;
-  width: 40rem;
-  margin-right:10.5rem;
+  width: 100%;
+  max-width: 40rem;
+  max-height:44.584rem;
+  height:100%;
   gap: 1.5rem;
   background-color: #ffffff;
-  border-radius:1.875rem;
+  border-radius:2.5%;
   box-shadow:0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   font-family: 'Montserrat','sans-serif';
   font-style: normal/regular;
@@ -62,19 +66,20 @@ body {
   justify-content:space-around;
   gap:1rem;
   margin: 0;
-  
-  
+  width: 100%;
+  height:3.75rem;
 }
 .nome-sobr div {
   display: flex;
   justify-content:flex-start;
   align-items:flex-start;
-  width:100%;
+  width: 100%;
+  height: 100%;
   
 }
 .nome-sobr input { 
-  height: 3.25rem;
   width: 100%;
+  height: 100%;
   border-radius: .1875rem;
   border: 2px solid #CDCDCD;
   
@@ -83,10 +88,12 @@ body {
 
 .email {
   display:flex;
+  width: 100%;
+  height:3.75rem;
 }
 .email input {
-  width:100%;
-  height:3.25rem;
+  width: 100%;
+  height: 100%;
   border-radius: .1875rem;
   border: 2px solid #CDCDCD;
 }
@@ -94,25 +101,27 @@ body {
   display: flex;
   justify-content: space-between; /* Ajusta os itens horizontalmente com espaço entre eles */
   align-items: center;
-  max-width: 13.6rem;
-  gap:0.2rem;
+  width: 99%;
+  height:3.75rem;
 }
 .data div {
-  width: 100%;
+  width: 30.4%;
+  height: 100%;
 }
 .data-item {
-  max-width: calc(100% - 25px);
-  height:3.25rem;
+  width: 100%;
+  height: 100%;
   border-radius: .1875rem;
   border: 2px solid #CDCDCD;
   
 }
 .senha {
-  height:3.75rem
+  height:3.75rem;
+  width:99.5%;
 }  
 .senha input { 
-  width: 99%;
-  height:3.25rem;
+  width: 99.5%;
+  height: 100%;
   border: 2px solid #CDCDCD;
   border-radius: .1875rem;
 }
@@ -123,8 +132,14 @@ body {
   line-height: .625rem;
   letter-spacing: 0em;
   text-align: left;
+  width: 100%;
+  height: 100%
 }
 
+.criterios {
+  width: 100%;
+  heigth: 8.4375rem;
+}
 
 .criterios h3 {
   margin-top:0;
@@ -149,7 +164,7 @@ body {
   align-self: center;
   padding: .5rem;
   border-radius:.9375rem;
-  margin-top:0.87rem;
+  margin-top: 1.25%;
   color: #FFF;
   font-family: 'Montserrat';
   font-size:2rem;
@@ -194,8 +209,8 @@ body {
     margin-top:4.5rem;
   }
   .form {
-    width:32rem;
-    gap:1rem;
+    width:32%;
+    gap:2rem;
   }
 
   .nome-sobr input {
