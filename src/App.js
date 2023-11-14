@@ -178,7 +178,7 @@ const handlePass = (event) => {
                 <div>
                   <label htmlFor="dia"></label>
                     <input
-                      type="text"
+                      type="number"
                       id="dia"
                       name="dia"
                       value={day}
@@ -192,7 +192,7 @@ const handlePass = (event) => {
                 <div>  
                     <label htmlFor="mes"></label>
                     <input
-                      type="text"
+                      type="number"
                       id="mes"
                       name="mes"
                       value={month}
@@ -206,7 +206,7 @@ const handlePass = (event) => {
                 <div >
                   <label htmlFor="ano"></label>
                     <input
-                      type="text"
+                      type="number"
                       id="ano"
                       name="ano"
                       value={FormData.ano}
