@@ -15,6 +15,7 @@ const [validate, setValidate] = useState({
   nome: '',
   sobrenome: '',
 })
+<<<<<<< HEAD
 const handleName = (event) => {
   const { name, value } = event.target;
   const trimmedValue = value.trim();
@@ -24,6 +25,20 @@ const handleName = (event) => {
       ...validate,
       [name]: trimmedValue,
     });
+=======
+
+
+const [pass, setPass] = useState({
+  password: '',
+});
+const [day, setDay] = useState ('')
+const [month, setMonth] = useState ('')
+
+const handlePass = (event) => {
+  const newValue = event.target.value;
+  if (newValue.length <= 20) {
+    setPass({ password: newValue });
+>>>>>>> a7f41caa772ce97bcd58201eace8542cf19885ad
   }
 };
 //Email
@@ -238,6 +253,7 @@ const handleSubmit = async (event) => {
                 
               </div>
               <div className='data'>
+<<<<<<< HEAD
                   <div>
                     <label htmlFor="dia"></label>
                     <select
@@ -289,6 +305,49 @@ const handleSubmit = async (event) => {
                     </select>
                     
                   </div>
+=======
+                <div>
+                  <label htmlFor="dia"></label>
+                    <input
+                      type="number"
+                      id="dia"
+                      name="dia"
+                      value={day}
+                      onChange={handleDayChange}
+                      placeholder="&nbsp;Dia"
+                      required
+                      className='data-item'
+                    />
+                   
+                </div>
+                <div>  
+                    <label htmlFor="mes"></label>
+                    <input
+                      type="number"
+                      id="mes"
+                      name="mes"
+                      value={month}
+                      onChange={handleMonthChange}
+                      placeholder="&nbsp;Mês"
+                      required
+                      className='data-item'
+                    />
+                   
+                </div>  
+                <div >
+                  <label htmlFor="ano"></label>
+                    <input
+                      type="number"
+                      id="ano"
+                      name="ano"
+                      value={FormData.ano}
+                      onChange={handleYearChange}
+                      placeholder="&nbsp;Ano"
+                      required
+                      pattern="\d{4}"
+                      className='data-item'
+                    />
+>>>>>>> a7f41caa772ce97bcd58201eace8542cf19885ad
                   
               </div>
               <div className='senha'>
