@@ -100,11 +100,11 @@ function Login() {
         navigate('/sucess');
       } catch (error) {
           console.error('Erro da solicitação:', error.response);
-          if (error.response && error.response.status === 400 && error.response.data.message.includes('E-mail already registered')) {
-            // Se o email já existe, atualize o estado
-            setEmailLogExists(true);
-          }
+          if (error.response.data.message.includes('E-mail not registered')) {
+        
+            console.error('E-mail não cadastrado.');
       }
+    }
   }
   return (
     <div className='Login'>
