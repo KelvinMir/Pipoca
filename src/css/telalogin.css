@@ -16,68 +16,102 @@
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-start;
-    margin-top:7rem;
-    margin-bottom:8.25rem;
+    margin-right:10%;
+    margin-left:50%;
 }
-.formularioLog .control {
+.control {
     display: flex;
     justify-content: center;
     align-items:center;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
 .formlog {
     background-color: #ffffff;
-    width: 75.8%;
-    margin-right:10.5rem;
+    width: 40rem;
+    height: 44.75rem;
     border-radius:1.875rem;
-    padding: 0 2rem;
+    margin-top:9rem;
+    
 }
 .h1L {
     text-align: center;
     font-family: 'Lobster', 'sans-serif';
     font-size:3rem;
     font-weight:400;
-    margin-top:2rem;
+    margin-top:1.125rem;
     margin-bottom:4rem;
     color:#000000;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 72%;
+    letter-spacing: 1.44px;
 }
 .logon {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items:center;
-    gap:1.5rem;
-    font-family: Montserrat;
+    gap:1rem;
+    font-family: 'Montserrat';
     font-size: 24px;
     font-weight: 400;
     letter-spacing: 0em;
     text-align: left;
-
-    
-    
-
+    height: 40%;
 }
-.logon .user {
+.user {
     width: 100%;
-    
+    height:20.64%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 80px;
 }
 .user input {
-    width: 94.5%;
-    padding:1rem;
+    width: 90%;
+    height: 100%;
+    padding-left:.625rem;
     border:.125rem solid #CDCDCD;
     border-radius:5px;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 80px;
 }
-.logon .password {
-    width: 100%;
+.user-invalido input,
+.password-invalido input {
+    border-color: red;
 }
 .password {
+    width: 100%;
+    height:20.64%;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 80px;
 }
 .password input {
-    width: 94.5%;
-    padding:1rem;
+    width: 90%;
+    padding-left:.625rem;
     border:.125rem solid #CDCDCD;
     border-radius:5px;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    
 }
 .password i {
     position: absolute;
@@ -90,12 +124,12 @@
     top: 35%;
     position: absolute;
     right: 5%;
-    top: 35%;
     height: 20px;
     border: none;
     width: 30px;
     background:#ffffff;
 }
+
 .Recuperar a {
     text-decoration: none;
     color: #000000;
@@ -105,7 +139,6 @@
     line-height: 24px;
     letter-spacing: 0em;
     text-align: center;
-
 }
 .Entrar {
     background-color: #0F00C1;
@@ -151,12 +184,15 @@
 .LogSocial {
     display:flex;
     flex-direction:column;
-    gap:1rem
+    justify-content:flex-start;
+    align-items:center;
+    gap:1rem;
+    height:25%;
 }
 .LogSocial button {
     background:#FFFFFF;
-    height:3.25rem;
-    text-align: start;
+    height:28.055%;
+    width:90%;
     border:1px solid #746969;
     display: flex;
     align-items: center;
@@ -168,7 +204,7 @@
     font-weight: 400;
     line-height: 32px;
     letter-spacing: 0px;
-    text-align: justified;
+    
 
 }
 .facebook::before {
@@ -199,7 +235,10 @@
     background-repeat: no-repeat;
 }
 .cadastrar {
-    margin-top:.5rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:1rem;
     margin-bottom:1rem;
     text-align:center;
     font-family: 'Crimson Text';
@@ -216,4 +255,141 @@
     font-weight: 400;
     line-height: 68.5%;
     text-decoration-line: underline;
+    margin-left:5px;
+}
+
+
+@media screen and (min-width: 1280px) and (min-height: 720px) {
+    .formularioLog input {
+        font-size:1.3rem;
+    }
+    .formlog {
+        width:28rem;
+        height:37rem;
+        margin-top:4rem;
+    }
+    .h1L {
+        margin-top: 1rem;
+        margin-bottom: 2.5rem;
+        font-size:2rem;
+    }
+    .user input {
+        height:80%;
+    }
+    .password input {
+        height:80%;
+    }
+    
+    .Recuperar a {
+        font-size:1.1rem;
+    }
+    .Entrar {
+        height:3rem;
+        font-size:1.4rem;
+    }
+    .alter {
+        margin:0.8rem;
+    }
+    .LogSocial button {
+        height: 25%;
+    }
+    .cadastrar {
+        font-size:20px;
+    }
+    .cadastrar a {
+        font-size:20px;
+        
+    }
+}
+@media screen and (min-width: 1440px) and (min-height: 1038px) {
+    .formularioLog input {
+        font-size:1.5rem;
+    }
+    .formlog {
+      width: 40rem;
+      height: 44.75rem; 
+      margin-top:9rem; 
+    }
+    .h1L {
+        margin-top: 1.125rem;
+        margin-bottom: 4rem;
+        font-size:3rem;
+    }
+    .user input {
+        height:100%;
+    }
+    .password input {
+        height:100%;
+    }
+    .password button {
+        top:35%;
+    }
+    
+    .Recuperar a {
+        font-size:1.375rem;
+    }
+    .Entrar {
+        height:4rem;
+        font-size:2rem;
+    }
+    .alter {
+        margin:1.5rem;
+    }
+    .LogSocial button {
+        height:28.055%;
+    }
+    .cadastrar {
+        font-size:22px;
+    }
+    .cadastrar a {
+        font-size:22px;
+        
+    }
+}
+
+@media screen and (min-width: 1920px) and (min-height: 1080px) {
+
+    .formlog {
+        font-size:1.6rem;
+        width: 42rem;
+        height: 48rem;
+        margin-top:10rem;
+    }
+      .h1L {
+          margin-top: 1.125rem;
+          margin-bottom: 4rem;
+          font-size:3.5rem
+      }
+      .user input {
+          height:100%;
+      }
+      .password input {
+          height:100%;
+      }
+      .password button {
+          top:35%;
+      }
+      
+      .Recuperar a {
+          font-size:1.6rem;
+      }
+      .Entrar {
+          height:4.5rem;
+          font-size:2.2rem;
+      }
+      .alter {
+          margin:1.5rem;
+      }
+      .LogSocial button {
+          height:28.055%;
+          font-size:1.25rem;
+      }
+      .cadastrar {
+        margin-top:1.5rem;
+        font-size:1.6rem;
+      }
+      .cadastrar a {
+          font-size:1.6rem;
+          
+      }
 }

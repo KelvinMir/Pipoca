@@ -2,11 +2,11 @@ import React from 'react';
 import '../css/telalogin.css'
 import '../pages/telalogin'
 function Senhaview(props) {
-  const { password, mostrarSenha, onChange, toggleMostrarSenha} = props;
+  const { password, mostrarSenha, onChange, toggleMostrarSenha,isPasswordValid} = props;
   
   
   return (
-        <div className="password">
+        <div className={`password ${isPasswordValid ? '' : 'senha-invalida'}`}>
           <input
             type={mostrarSenha ? 'text' : 'password'}
             id="password"

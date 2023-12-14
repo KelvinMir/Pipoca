@@ -14,16 +14,15 @@
   height: 100vh;
   
 }
-.formulario {
+.formularioC {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
   margin-right:10%;
-  margin-top:5%;
   margin-left:50%;
 }
-.control {
+.controlC {
   display: flex;
   justify-content: center;
   align-items:center;
@@ -31,24 +30,26 @@
   width: 100%;
   height: 100%;
 }
-.formulario input {
+.formularioC input {
   font-size:1.5rem;
 }
-.form {
+.formC {
   display: flex;
   flex-direction: column;
-  padding: 0 2rem;
-  width:100%;
-  height:100%;
+  align-items: center;
+  justify-content: center;
+  width:15rem;
+  margin-top:9rem;
   gap: 1.5rem;
   background-color: #ffffff;
-  border-radius:2.5%;
+  border-radius:1.875rem;
   box-shadow:0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   font-family: 'Montserrat','sans-serif';
   font-style: normal/regular;
   font-weight: 400;
   line-height: 80%;
   border:.125rem solid #CDCDCD;
+  flex-shrink: 0;
 }
 .h1C {
   align-self: center;
@@ -60,11 +61,11 @@
 }
 .nome-sobr {
   display: flex;
-  justify-content:space-around;
+  justify-content:space-between;
   gap:1rem;
   margin: 0;
-  width: 100%;
-  height:3.25rem;
+  width: 90%;
+  height:100%
 }
 .nome-sobr div {
   display: flex;
@@ -78,13 +79,16 @@
   width: 100%;
   height: 100%;
   border-radius: .1875rem;
-  border: 2px solid #CDCDCD;
-  
+  border: 2px solid #CDCDCD; 
+}
+.nome-invalido input,
+.sobrenome-invalido input {
+  border-color: red;
 }
 .email {
   display:flex;
-  width: 100%;
-  height:3.25rem;
+  width: 90%;
+  height:100%;
 }
 .email input {
   width: 100%;
@@ -92,16 +96,60 @@
   border-radius: .1875rem;
   border: 2px solid #CDCDCD;
 }
+.email-invalido input {
+  border-color: red;
+}
+.overlayEmail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 3;
+  
+}
+.background {
+  background-color: #ffffff;
+  height: 30%;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap:1rem;
+}
+.Title {
+  color:#000000;
+  font-family: 'Lobster', 'sans-serif';
+  font-weight: 400;
+  font-size:3rem;
+}
+.buttons {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  gap:1rem;
+}
+.EmailExist {
+  padding:1rem;
+  font-size:1.5rem;
+  border-radius:15px;
+  background-color: #0F00C1;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'Montserrat';
+}
 .data {
   display: flex;
   justify-content: space-between; /* Ajusta os itens horizontalmente com espaço entre eles */
   align-items: center;
-  width: 100%;
-  height:3.75rem;
+  width: 90%;
+  height:100%;
 }
 .data div {
   width: 30.4%;
-  height: 100%;
+  height: 117.65%;
 }
 .data-item {
   width: 100%;
@@ -116,17 +164,11 @@
   font-size:1rem;
 }
 .senha {
-  height:3.25rem;
-  width:99.5%;
-  height:
-}  
-.senha input { 
-  width: 99.5%;
-  height: 100%;
-  border: 2px solid #CDCDCD;
-  border-radius: .1875rem;
-}
-.senha div {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100%;
+  width:90%;
   font-family: 'Montserrat', 'sans-serif';
   font-size: .75rem;
   font-weight: 400;
@@ -135,16 +177,21 @@
   text-align: left;
   width: 100%;
   height: 100%
-}
-.error-input {
-  border: 2px solid red;
-}
-.sucess-input {
-  border: 2px solid green;
-}
-.criterios {
+  
+}  
+.senha input { 
   width: 100%;
-  heigth: 8.4375rem;
+  height: 100%;
+  border: 2px solid #CDCDCD;
+  border-radius: .1875rem;
+}
+.senha-invalida input {
+  border-color: red;
+}
+
+.criterios {
+  width: 90%;
+  height: 100%;
 }
 
 .criterios h3 {
@@ -165,10 +212,10 @@
 }
 .Cadastrar {
   background-color: #0F00C1;
-  width: 14.5rem;
-  height: 4rem;
+  width: 45%;
+  height: 100%;
   align-self: center;
-  padding: .5rem;
+  padding: 1rem;
   border-radius:.9375rem;
   margin-top: 1.25%;
   color: #FFF;
@@ -200,21 +247,125 @@
   text-decoration-line: underline;
 }
 
-@media screen and (min-width: 1500px) and (max-width: 1600px) {
-  .formulario {
-    margin-right:11%;
-    margin-left:51%;
+
+
+@media screen and (min-width: 1280px) and (min-height: 720px) {
+  
+  
+  .formularioC input {
+    font-size:1.3rem;
+  }
+  .formC {
+    gap:1.2rem;
+    width:28rem;
+    margin-top:4rem;
+  }
+  .h1C {
+    font-size:2.1rem
+  }
+  .data-item {
+    font-size:1.2rem;
+  }
+  
+  .senha {
+    width:90%
+  }
+  .Cadastrar {
+    padding:0.9rem;
+    font-size:1.7rem;
+  }
+  .login {
+    font-size:1.1rem;
+  }
+  .login a{
+    font-size:1.1rem;
   }
 }
-@media screen and (min-width: 1601px) and (max-width: 1700px) {
-  .formulario {
-    margin-right:13%;
-    margin-left:53%;
+
+@media screen and (min-width: 1440px) and (min-height: 1038px) {
+
+  .formularioC input {
+    font-size:1.5rem;
+  }
+  .formC {
+    height:716px;
+    width:640px;
+    gap:1.5rem;
+    margin-top:9rem;
+  }
+  .h1C {
+    font-size:3rem
+  }
+  .data-item {
+    font-size:1.5rem;
+  }
+  .senha {
+    width:90%
+  }
+  .Cadastrar {
+    padding:1rem;
+    font-size:2rem;
+  }
+  .login {
+    font-size:1.375rem;
+  }
+  .login a {
+    font-size:1.375rem;
   }
 }
-@media screen and (min-width: 1701px) and (max-width: 1800px) {
-  .formulario {
-    margin-right:14%;
-    margin-left:54%;
+
+@media screen and (min-width: 1600px) and (min-height:1060px) {
+
+  .formularioC input {
+    font-size:1.6rem;
   }
+  .formC {
+    gap:1.6rem;
+  }
+  .h1C {
+    font-size:3.1rem
+  }
+  .data-item {
+    font-size:1.6rem;
+  }
+  .senha {
+    width:90%
+  }
+  .Cadastrar {
+    padding:1rem;
+    font-size:2rem;
+  }
+}
+
+@media screen and (min-width: 1920px) and (min-height: 1080px) {
+  
+  .formularioC input {
+    font-size:1.6rem;
+  }
+  .formC {
+    gap:1.6rem;
+    width:42rem;
+    height:48rem;
+    margin-top:10rem;
+  }
+  .h1C {
+    font-size:3.5rem
+  }
+  .data-item {
+    font-size:1.6rem;
+  }
+  .senha {
+    width:90%
+  }
+  .Cadastrar {
+    padding:1rem;
+    font-size:2.2rem;
+  }
+  .login {
+    font-size:1.7rem;
+  }
+  .login a {
+    font-size:1.7rem;
+  }
+  
 }

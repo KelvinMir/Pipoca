@@ -2,17 +2,31 @@ footer{
     display:flex;
     justify-content:center;
     align-items:center;
-    
-    
-}
-ul {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    list-style-type:none;
     gap:.8rem;
+    margin-top:4.5rem;
+}
+a {
+    
 }
 img {
-    width: 1.5rem;
+    width: 1.75rem;
 }
 
+@media screen and (min-width: 1280px) and (min-height: 720px) {
+    footer{
+        margin-top:1.4rem;
+    }
+    img {
+        width: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 1440px) and (min-height: 1038px) {
+    footer{
+        margin-top:4.5rem;
+    }
+    img {
+        width: 1.75rem;
+    }
+
+}

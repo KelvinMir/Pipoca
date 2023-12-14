@@ -9,7 +9,7 @@ const mystyle = {
 }
 function Sucess () {
     return (
-        <div style={mystyle}>Sucesso!</div>
+        <div style={mystyle}>Sucesso! Você entrou na Homepage</div>
     )
 }
 

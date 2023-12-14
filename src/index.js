@@ -7,6 +7,7 @@ import Login from './pages/telalogin';
 import Sucess from './Component/sucess'
 
 
+
 const root = createRoot(document.getElementById('root'));
 root.render(
   <Router>
@@ -14,6 +15,7 @@ root.render(
       <Route path="/" element={<Cadastro />} />
       <Route path="/telalogin" element={<Login />} />
       <Route path="/sucess" element={<Sucess />} />
+      
     </Routes>
   </Router>
 );

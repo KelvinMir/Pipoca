@@ -5,28 +5,65 @@ import Footer from '../Component/footer';
 import '../css/telalogin.css';
 import { useNavigate } from 'react-router-dom';
 import Senhaview from '../Component/senhaview';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-  const [emailExists, setEmailExists] = useState(false);
-
+  const [emailLogExists, setEmailLogExists] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(true);
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    const cleanedTextLog = value.replace(/[^A-Za-zÇçÁáÉéÍíÓóÚúÂâÊêÎîÔôÛûÀàÈèÌìÒòÙùÃãÕõÄäËëÏïÖöÜüÑñ\s]/g, '');
+    setFormData({ ...formData, [name]: cleanedTextLog });
     if (name === 'email') {
-      setEmailExists(false);
+      const lowercaseEmail = value.toLowerCase();
+      setFormData({
+        ...formData,
+        [name]: lowercaseEmail,
+      });
+      setIsEmailValid(validateEmailFormat(lowercaseEmail));
+    } else {
+      setFormData({
+        ...formData,
+        [name]: cleanedTextLog,
+      });
+    }
+    
+  };
+  const validateEmailFormat = (email) => {
+  
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const [isPasswordValid, setIsPasswordValid] = useState(true);
+  function isValidPassword(password) {
+    const regexMaiuscula = /[A-Z]/;
+    const regexMinuscula = /[a-z]/;
+    const regexNumero = /[0-9]/;
+    const regexCaractereEspecial = /[!@#$%^&*(),.?":{}|<>]/;
+    const condicaoComprimento = password.length >= 8 && password.length <= 20;
+  
+    return (
+      regexMaiuscula.test(password) &&
+      regexMinuscula.test(password) &&
+      regexNumero.test(password) &&
+      regexCaractereEspecial.test(password) &&
+      condicaoComprimento
+    );
+  }
+  const handlePasswordChange = (event) => {
+    const newValue = event.target.value;
+    if (newValue.length <= 20) {
+      setFormData({ password: newValue });
+      setIsPasswordValid(isValidPassword(newValue));
     }
   };
 
-  const handlePasswordChange = (event) => {
-    handleChange(event);
-  };
+
 
   const toggleMostrarSenha = () => {
     setFormData({
@@ -34,7 +71,9 @@ function Login() {
       mostrarSenha: !formData.mostrarSenha,
     });
   };
-
+  const FecharPag = () => {
+    setEmailLogExists(false);
+  };
   const navigate = useNavigate();
 
   
@@ -42,8 +81,7 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-      if (formData.email) {
-        try {
+      try {
 
           const token = 'https://api-pipoca-agil-b6fe2e9f601d.herokuapp.com/api/v1/auth';
           const encodedToken = encodeURIComponent(token);
@@ -53,35 +91,21 @@ function Login() {
               'Authorization': `Bearer ${encodedToken}`
             },
           };
-
-          const response = await axios.get(`https://api-pipoca-agil-b6fe2e9f601d.herokuapp.com/api/v1/users/email?email==${formData.email}`);
-          if (response.data.exists) {
-            setEmailExists(true);
-            return;
-          }
-        console.log(response.data.exists)
-
         const LoginAPI = {
-          email: formData.email,
-          password: formData.password,
+          "email": formData.email,
+          "password": formData.password,
         };
-
-        
-
         const LoginResponse = await axios.post('https://api-pipoca-agil-b6fe2e9f601d.herokuapp.com/api/v1/auth', LoginAPI, config);
-
         console.log('Resposta da API:', LoginResponse.data);
         navigate('/sucess');
-        } catch (error) {
-          if (error.response) {
-            console.error('Erro na resposta da API:', error.response.data);
-          } else {
-            console.error('Erro na solicitação:', error.message);
+      } catch (error) {
+          console.error('Erro da solicitação:', error.response);
+          if (error.response && error.response.status === 400 && error.response.data.message.includes('E-mail already registered')) {
+            // Se o email já existe, atualize o estado
+            setEmailLogExists(true);
           }
-        }
       }
-    }
-
+  }
   return (
     <div className='Login'>
       <MenuHamburguer />
@@ -90,7 +114,7 @@ function Login() {
           <form className='formlog' onSubmit={handleSubmit}>
             <h1 className='h1L'>Login</h1>
             <div className='logon'>
-              <div className='user'>
+              <div className={`user ${isEmailValid ? '' : 'user-invalido'} ${emailLogExists ? 'email-ja-cadastrado' : ''}`}>
                 <input
                   type="text"
                   id="email"
@@ -100,16 +124,16 @@ function Login() {
                   value={formData.email}
                   required
                 />
-                {emailExists && <span className="erro">Este email já está cadastrado.</span>}
               </div>
-              {formData.email && (
-                <Senhaview
+              <Senhaview
                   password={formData.password}
                   mostrarSenha={formData.mostrarSenha}
                   onChange={handlePasswordChange}
                   toggleMostrarSenha={toggleMostrarSenha}
-                />
-              )}
+                  isEmailValid={isEmailValid}
+                  emailLogExists={emailLogExists}
+                  isPasswordValid={isPasswordValid}
+              />
               <div className='Recuperar'><a href='/'>Recuperar senha?</a></div>
               <button className='Entrar' type="submit">Entrar</button>
             </div>
@@ -123,7 +147,20 @@ function Login() {
               <button className='google' type="button">Continuar com Google</button>
               <button className='apple' type="button">Continuar com Apple</button>
             </div>
-            <div className='cadastrar'>Não tem conta? <a href="/">Cadastre-se</a></div>
+            <div className='cadastrar'>Não tem conta? <a href="/"> Cadastre-se</a></div>
+            {emailLogExists && (
+                    <div className="overlayEmail">
+                      <div className='background'>
+                        <h1 className='Title'>Email já cadastrado!</h1>
+                        <div className='buttons'>
+                          <button className='EmailExist'><Link to="/telalogin" className='EmailExist'> Faça login</Link></button>   
+                          <div>Ou</div>   
+                          <button className='EmailExist' onClick={FecharPag}>Use outro email</button>  
+                        </div>
+                      </div>
+                    </div>
+            )}
+                
           </form>
           <Footer />
         </div>
